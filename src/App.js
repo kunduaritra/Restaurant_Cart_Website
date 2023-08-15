@@ -5,7 +5,9 @@ function App() {
   return (
     <div>
       <Header />
-      <Meals />
+      <main>
+        <Meals />
+      </main>
     </div>
   );
 }
