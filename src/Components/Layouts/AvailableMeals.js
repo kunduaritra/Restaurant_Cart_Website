@@ -8,27 +8,27 @@ const DUMMY_MEALS = [
     name: "Royal Mutton Chaap",
     description:
       "Beaten pieces of mutton are marinated in special spices and then shallow fried in oil on an iron tawa (serves 1).",
-    price: 320,
+    price: 350,
   },
   {
     id: "m2",
     name: "Royal Mutton Biryani",
     description: "Beaten pieces of mutton are marinated in special spices!",
-    price: 340,
+    price: 400,
   },
   {
     id: "m3",
     name: "Royal Chicken Chaap",
     description:
       "Beaten pieces of chicken are marinated in special spices and then shallow fried in oil on an iron tawa (serves 1).",
-    price: 290,
+    price: 320,
   },
   {
     id: "m4",
     name: "Chicken Reshmi Malai Kabab",
     description:
       "Chicken marinated in juicy mixture of curd, cream, cashew nuts and spices and then cooked in tandoor.",
-    price: 340,
+    price: 290,
   },
 ];
 
