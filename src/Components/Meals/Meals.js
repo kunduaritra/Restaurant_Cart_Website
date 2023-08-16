@@ -1,8 +1,9 @@
 import { Fragment } from "react";
-import MealsSummary from "./MealsSummary";
-import AvailableMeals from "../Layouts/AvailableMeals";
 
-const Meals = (props) => {
+import MealsSummary from "./MealsSummary";
+import AvailableMeals from "./AvailableMeals";
+
+const Meals = () => {
   return (
     <Fragment>
       <MealsSummary />
