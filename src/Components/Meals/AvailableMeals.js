@@ -4,27 +4,27 @@ import MealItem from "./MealItem/MealItem";
 
 const DUMMY_MEALS = [
   {
-    id: "m1",
+    id: Math.random(),
     name: "Royal Mutton Chaap",
     description:
       "Beaten pieces of mutton are marinated in special spices and then shallow fried in oil on an iron tawa (serves 1).",
     price: 350,
   },
   {
-    id: "m2",
+    id: Math.random(),
     name: "Royal Mutton Biryani",
     description: "Beaten pieces of mutton are marinated in special spices!",
     price: 400,
   },
   {
-    id: "m3",
+    id: Math.random(),
     name: "Royal Chicken Chaap",
     description:
       "Beaten pieces of chicken are marinated in special spices and then shallow fried in oil on an iron tawa (serves 1).",
     price: 320,
   },
   {
-    id: "m4",
+    id: Math.random(),
     name: "Chicken Reshmi Malai Kabab",
     description:
       "Chicken marinated in juicy mixture of curd, cream, cashew nuts and spices and then cooked in tandoor.",

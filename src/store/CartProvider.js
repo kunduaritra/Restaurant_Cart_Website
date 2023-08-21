@@ -3,18 +3,21 @@ import CartContext from "./cart-contect";
 
 const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
-  const addItemTOCartHandler = (item) => {
-    setCartItems((prevItem) => [...prevItem, item]);
+
+  const addItemToCartHandler = (item) => {
+    setCartItems((prevItems) => [...prevItems, item]);
   };
 
-  const removeItemFromCartHandler = (id) => {};
+  const removeItemFromCartHandler = (id) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
 
   const cartContext = {
     items: cartItems,
-    totalAmount: 0,
-    addItem: addItemTOCartHandler,
+    addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
   };
+
   return (
     <CartContext.Provider value={cartContext}>
       {props.children}
