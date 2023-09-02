@@ -2,24 +2,26 @@ import { useState } from "react";
 import CartContext from "./cart-contect";
 
 const CartProvider = (props) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [items, setItems] = useState([]);
 
   const addItemToCartHandler = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+    setItems([...items, item]);
+    console.log("inside addItemToCartHandler", cartContext);
   };
 
   const removeItemFromCartHandler = (id) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    // setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   const cartContext = {
-    items: cartItems,
+    items: items,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
   };
 
   return (
     <CartContext.Provider value={cartContext}>
+      {console.log("inside cartcontext.provider", cartContext)}
       {props.children}
     </CartContext.Provider>
   );
