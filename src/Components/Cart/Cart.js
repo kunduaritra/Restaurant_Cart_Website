@@ -1,38 +1,42 @@
-import { useContext } from "react";
+import CartContext from "../../store/cart-contect";
+import React, { useContext } from "react";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
-import CartContext from "../../store/cart-contect";
 
 const Cart = (props) => {
-  const cartCntx = useContext(CartContext);
-  //
-  const groupedItems = cartCntx.items.reduce((acc, item) => {
-    const existingItem = acc.find(
-      (groupedItem) => groupedItem.name === item.name
-    );
-    console.log("existingItem -->", existingItem);
-    if (existingItem) {
-      existingItem.quantity += parseInt(item.quantity);
-      existingItem.price += parseInt(item.price);
-    } else {
-      acc.push({ ...item });
-    }
-
-    return acc;
-  }, []);
+  const cartCtx = useContext(CartContext);
+  const { items } = cartCtx;
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
-      {groupedItems.map((groupedItem) => (
-        <li key={groupedItem.id}>
-          Name: {groupedItem.name} Price: {groupedItem.price} Quantity:{" "}
-          {groupedItem.quantity}
+      {items.map((item) => (
+        <li key={item.id}>
+          Name: {item.name} Price: {item.price} Quantity: {item.quantity}
+          <div className={classes.actions}>
+            <button
+              className={classes.button}
+              onClick={() => cartCtx.updateItem(item.id, item.quantity + 1)}
+            >
+              +
+            </button>
+            <button
+              className={classes["button--alt"]}
+              onClick={() =>
+                item.quantity === 1
+                  ? cartCtx.removeItem(item.id)
+                  : cartCtx.updateItem(item.id, item.quantity - 1)
+              }
+            >
+              -
+            </button>
+          </div>
         </li>
       ))}
     </ul>
   );
-  const totalPrice = cartCntx.items.reduce(
-    (total, item) => total + item.price,
+
+  const totalPrice = items.reduce(
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
@@ -41,7 +45,7 @@ const Cart = (props) => {
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>₹{totalPrice}</span>
+        <span>₹{totalPrice.toFixed(2)}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={props.onClose}>
